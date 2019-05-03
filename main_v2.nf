@@ -522,7 +522,7 @@ process fastqc_trimmed {
  */
 
 process gzip_trimmed {
-    tag "$name"
+    tag "$prefix"
     memory '4 GB'
     publishDir "${params.outdir}/trimmed", mode: 'copy'
 
@@ -530,14 +530,14 @@ process gzip_trimmed {
     params.saveTrim || params.saveAllfq
 
     input:
-    set val(name), file(trimmed_reads) from trimmed_reads_gzip
+    file(trimmed_reads) from trimmed_reads_gzip
 
     output:
-    set val(name), file("*.gz") into trimmed_gzip
+    set val(prefix), file("*.gz") into trimmed_gzip
 
     script:
     """
-    gzip -c $trimmed_reads > ${name}.fastq.gz
+    gzip -c $trimmed_reads > ${prefix}.fastq.gz
     """
  }
 
@@ -571,8 +571,7 @@ process hisat2 {
         hisat2  -p 32 \
                 --very-sensitive \
                 -x ${indices_path} \
-                --pen-noncansplice 12 \
-                -k 10 \
+                --pen-noncansplice 14 \
                 --mp 1,0 \
                 --sp 2,1 \
                 -1 ${name}_R1.trim.fastq \
