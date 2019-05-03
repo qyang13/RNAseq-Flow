@@ -34,7 +34,7 @@ Pipeline steps:
     6. Coverage files
         6d. BEDTools : non-normalized & nornmalized bedgraphs
         6b. BEDTools and kentUtils : 5' bigwigs for dREG & normalized bigwigs for genome browser
-        
+
     7. Normalizing bigwigs for Genome Browser use
 
     8. IGV Tools : bedGraph --> tdf
@@ -79,7 +79,7 @@ def helpMessage() {
     QC Options:
         --skipMultiQC                  Skip running MultiQC.
         --skipRSeQC                    Skip running RSeQC.
-        
+
     Analysis Options:
         --count                        Run RSeQC FPKM count over RefSeq annotated genes.
 
@@ -102,7 +102,7 @@ params.name = false
 params.multiqc_config = "$baseDir/conf/multiqc_config.yaml"
 params.email = false
 params.plaintext_email = false
-params.bbmap_adapters = "$baseDir/bin/adapters.fa"
+params.bbmap_adapters = "$baseDir/bin/NUGEN_UNIVERSAL_Adapters.fa"
 params.bedGraphToBigWig = "$baseDir/bin/bedGraphToBigWig"
 params.rcc = "$baseDir/bin/rcc.py"
 params.workdir = "./nextflowTemp"
@@ -129,6 +129,11 @@ if ( params.hisat2_indices ){
 if ( params.genome_refseq ){
     genome_refseq = file("${params.genome_refseq}")
 }
+
+if ( params.annotation_gtf ){
+    annotation_gtf = file("${params.annotation_gtf}")
+}
+
 
 if ( params.bbmap_adapters){
     bbmap_adapters = file("${params.bbmap_adapters}")
@@ -281,21 +286,23 @@ process sra_dump {
     else {
         cpus 1
     }
-    
+
     input:
     set val(prefix), file(reads) from read_files_sra
 
     output:
     set val(prefix), file("*.fastq") into fastq_reads_qc_sra, fastq_reads_trim_sra, fastq_reads_gzip_sra
-   
+
 
     script:
     prefix = reads.baseName
-    if (!params.threadfqdump) {
+    if (!params.threadfqdump && !params.singleEnd) {
         """
         echo ${prefix}
 
-        fastq-dump ${reads}
+        fastq-dump --split-3 ${reads}
+        mv ${prefix}_1.fastq ${prefix}.R1.fastq
+        mv ${prefix}_2.fastq ${prefix}.R2.fastq
         """
     } else if (!params.singleEnd) {
          """
@@ -306,11 +313,11 @@ process sra_dump {
             --split-3 \
             --sra-id ${reads}
         """
-    } else if (!params.threadfqdump && !params.singleEnd) {
+    } else if (!params.threadfqdump ) {
         """
         echo ${prefix}
 
-        fastq-dump --split-3 ${reads}
+        fastq-dump ${reads}
         """
     } else {
         """
@@ -399,12 +406,12 @@ process bbduk {
         seqkit seq -j 16 -r -p \
                   ${name}_R1.flip.fastq \
                   -o ${name}.flip.fastq
-                  
+
         seqkit seq -j 16 -r -p \
                  ${name}_R2.flip.fastq \
                  -o ${name}.flip.fastq
 
-        
+
 
         bbduk.sh -Xmx20g \
                   t=16 \
@@ -430,7 +437,7 @@ process bbduk {
                   ${name}.fastq \
                   -o ${name}.flip.fastq
 
-        
+
         bbduk.sh -Xmx20g \
                   t=16 \
                   in=${name}.flip.fastq \
@@ -447,12 +454,12 @@ process bbduk {
     }
         else if (!params.singleEnd) {
         """
-        echo ${name}      
+        echo ${name}
 
         bbduk.sh -Xmx20g \
                   t=16 \
-                  in=${name}_R1.fastq \
-                  in2=${name}_R2.fastq \
+                  in=${name}.R1.fastq \
+                  in2=${name}.R2.fastq \
                   out=${name}_R1.trim.fastq \
                   out2=${name}_R2.trim.fastq \
                   ref=${bbmap_adapters} \
@@ -467,7 +474,7 @@ process bbduk {
     } else {
         """
         echo ${name}
-        
+
         bbduk.sh -Xmx20g \
                   t=16 \
                   in=${name}.fastq \
@@ -554,39 +561,39 @@ process hisat2 {
 
     output:
     set val(name), file("*.sam") into hisat2_sam
-    file("*.txt") into hisat2_mapstats    
+    file("*.txt") into hisat2_mapstats
 
     script:
     if (!params.singleEnd) {
         """
         echo ${name}
-    
+
         hisat2  -p 32 \
                 --very-sensitive \
                 -x ${indices_path} \
                 --pen-noncansplice 14 \
                 --mp 1,0 \
-                --sp 3,1 \
+                --sp 2,1 \
                 -1 ${name}_R1.trim.fastq \
                 -2 ${name}_R2.trim.fastq \
                 --new-summary \
                 > ${name}.sam \
-                2> ${name}.hisat2_mapstats.txt                
+                2> ${name}.hisat2_mapstats.txt
         """
     } else {
         """
         echo ${name}
-    
+
         hisat2  -p 32 \
                 --very-sensitive \
                 --pen-noncansplice 14 \
                 --mp 1,0 \
-                --sp 3,1 \
+                --sp 2,1 \
                 -x ${indices_path}\
                 -U ${trimmed_reads} \
                 --new-summary \
                 > ${name}.sam \
-                2> ${name}.hisat2_mapstats.txt                
+                2> ${name}.hisat2_mapstats.txt
         """
     }
 }
@@ -649,10 +656,10 @@ process samtools {
 }
 
 sorted_bam_ch
-   .into {sorted_bams_for_bedtools_bedgraph; sorted_bams_for_preseq; sorted_bams_for_rseqc; sorted_bams_for_dreg_prep; sorted_bams_for_pileup; sorted_bams_for_rseqc_count}
+   .into {sorted_bams_for_bedtools_bedgraph; sorted_bams_for_preseq; sorted_bams_for_rseqc; sorted_bams_for_dreg_prep; sorted_bams_for_pileup; sorted_bams_for_count}
 
 sorted_bam_indices_ch
-    .into {sorted_bam_indices_for_bedtools_bedgraph; sorted_bam_indices_for_bedtools_normalized_bedgraph; sorted_bam_indicies_for_pileup; sorted_bam_indices_for_preseq; sorted_bam_indices_for_rseqc; sorted_bam_indices_for_rseqc_count}
+    .into {sorted_bam_indices_for_bedtools_bedgraph; sorted_bam_indices_for_bedtools_normalized_bedgraph; sorted_bam_indicies_for_pileup; sorted_bam_indices_for_preseq; sorted_bam_indices_for_rseqc; sorted_bam_indices_for_count}
 
 /*
  *STEP 5a - Plot the estimated complexity of a sample, and estimate future yields
@@ -710,7 +717,7 @@ process rseqc_qc {
         else if (filename.indexOf("junction_saturation.junctionSaturation_plot.pdf") > 0)                                                                                                                          "junction_saturation/$filename"
         else filename
         }
-    
+
     when:
     !params.skipRSeQC
 
@@ -723,9 +730,9 @@ process rseqc_qc {
 
     script:
     """
-    
+
     export PATH=~/.local/bin:$PATH
-    
+
     read_distribution.py -i ${bam_file} \
                          -r ${genome_refseq} \
                          > ${name}.read_distribution.txt
@@ -736,45 +743,48 @@ process rseqc_qc {
     infer_experiment.py -i ${bam_file} \
                         -r ${genome_refseq} \
                         > ${name}.infer_experiment.txt
-                        
+
     bam_stat.py -i ${bam_file} \
                         > ${name}.bam_stat.txt
-                        
+
     junction_annotation.py -i ${bam_file} \
                            -o ${name}.junction_annotation \
                            -r ${genome_refseq}
-                           
+
     junction_saturation.py -i ${bam_file} \
                            -o ${name}.junction_saturation \
-                           -r ${genome_refseq}                       
+                           -r ${genome_refseq}
     """
  }
 
-process rseqc_count {
+process count {
     tag "$name"
     time '8h'
     validExitStatus 0,143
     memory '40 GB'
-    publishDir "${params.outdir}/rseqc_counts" , mode: 'copy', pattern: "*FPKM.xls"
-    
+    publishDir "${params.outdir}/counts" , mode: 'copy', pattern: "*.rc"
+
     when:
     params.count
 
     input:
-    set val(name), file(bam_file) from sorted_bams_for_rseqc_count
-    file(bam_indices) from sorted_bam_indices_for_rseqc_count
+    set val(name), file(bam_file) from sorted_bams_for_count
+    file(bam_indices) from sorted_bam_indices_for_count
 
     output:
-    file "*FPKM.xls" into rseqc_counts
+    file "*.rc" into counts
 
     script:
     """
     export PATH=~/.local/bin:$PATH
-    
-    FPKM_count.py -i ${bam_file} \
-                           -o ${name}.counts \
-                           -r ${genome_refseq} \
-                           -e
+
+    featureCounts -F GTF \
+                  -s 1 \
+                  -o ${name} \
+                  -a ${annotation_gtf} \
+                  -t exon \
+                  -g gene_id \
+                  ${bam_file}
     """
  }
 
