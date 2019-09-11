@@ -1,0 +1,61 @@
+Sep-11 12:44:35.112 [main] DEBUG nextflow.cli.Launcher - $> nextflow run /Users/qiya9811/DTRA/RNAseq-Flow/main.nf -profile slurm_grch38 --workdir \'/scratch/Users/qiya9811/DTRA_8_15\' --genome_id hg38 --outdir \'/scratch/Users/qiya9811/DTRA_8_15/nf_out\' --email qiya9811@colorado.edu --fastqs /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_08_PM.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_08_PM.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_09_PM.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_09_PM.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_09_WS.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_09_WS.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_10_PM.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_10_PM.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_10_WS.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_10_WS.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_11_PM.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_11_PM.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_11_WS.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_11_WS.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_12_PM.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_12_PM.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_12_WS.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_12_WS.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_13_PM.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_13_PM.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_13_WS.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_13_WS.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_14_PM.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_14_PM.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_14_WS.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_14_WS.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_15_PM.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_15_PM.R2.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_15_WS.R1.fastq.gz /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_15_WS.R2.fastq.gz --flipR2
+Sep-11 12:44:35.280 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 19.01.0
+Sep-11 12:44:35.298 [main] INFO  nextflow.cli.CmdRun - Launching `/Users/qiya9811/DTRA/RNAseq-Flow/main.nf` [shrivelled_goldwasser] - revision: 75062231bb
+Sep-11 12:44:35.318 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /Users/qiya9811/DTRA/RNAseq-Flow/nextflow.config
+Sep-11 12:44:35.319 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/qiya9811/DTRA/RNAseq-Flow/nextflow.config
+Sep-11 12:44:35.355 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `slurm_grch38`
+Sep-11 12:44:36.089 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [standard, slurm, minimal, test, paper, slurm_grch38, conda, batch, singularity, none, aws, docker]
+Sep-11 12:44:36.121 [main] DEBUG nextflow.Session - Session uuid: f95d2bbc-257b-462b-9ad5-6a8895cd78f9
+Sep-11 12:44:36.121 [main] DEBUG nextflow.Session - Run name: shrivelled_goldwasser
+Sep-11 12:44:36.121 [main] DEBUG nextflow.Session - Executor pool size: 32
+Sep-11 12:44:36.134 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 19.01.0 build 5050
+  Modified: 22-01-2019 11:19 UTC (04:19 MDT)
+  System: Linux 3.10.0-862.14.4.el7.x86_64
+  Runtime: Groovy 2.5.5 on OpenJDK 64-Bit Server VM 1.8.0_151-b12
+  Encoding: UTF-8 (UTF-8)
+  Process: 16549@fiji-2.colorado.edu [128.138.93.105]
+  CPUs: 32 - Mem: 125.7 GB (568 MB) - Swap: 32 GB (28.2 GB)
+Sep-11 12:44:36.185 [main] DEBUG nextflow.Session - Work-dir: /Users/qiya9811/DTRA/RNAseq-Flow/'/scratch/Users/qiya9811/DTRA_8_15' [nfs]
+Sep-11 12:44:36.494 [main] DEBUG nextflow.Session - Session start invoked
+Sep-11 12:44:36.499 [main] DEBUG nextflow.processor.TaskDispatcher - Dispatcher > start
+Sep-11 12:44:36.500 [main] DEBUG nextflow.trace.TraceFileObserver - Flow starting -- trace file: /Users/qiya9811/DTRA/RNAseq-Flow/'/scratch/Users/qiya9811/DTRA_8_15/nf_out'/pipeline_info/steadystate_pipeline_trace.txt
+Sep-11 12:44:36.505 [main] DEBUG nextflow.script.ScriptRunner - > Script parsing
+Sep-11 12:44:37.132 [main] WARN  nextflow.Session - There's no process matching config selector: fastqc -- Did you mean: fastQC?
+Sep-11 12:44:37.133 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-11 12:44:37.216 [Actor Thread 2] ERROR n.extension.DataflowExtensions - @unknown
+groovy.lang.MissingMethodException: No signature of method: nextflow.Channel$_fromFilePairs0_closure6.call() is applicable for argument types: (sun.nio.fs.UnixPath) values: [/Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_08_PM.R1.fastq.gz]
+Possible solutions: any(), any(), any(groovy.lang.Closure), tap(groovy.lang.Closure), each(groovy.lang.Closure), any(groovy.lang.Closure)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:256)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1041)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:821)
+	at groovy.lang.GroovyObjectSupport.invokeMethod(GroovyObjectSupport.java:44)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:47)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:115)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:127)
+	at nextflow.extension.MapOp$_apply_closure1.doCall(MapOp.groovy:46)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:104)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:326)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:264)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1041)
+	at groovy.lang.Closure.call(Closure.java:411)
+	at groovyx.gpars.dataflow.operator.DataflowOperatorActor.startTask(DataflowOperatorActor.java:120)
+	at groovyx.gpars.dataflow.operator.DataflowOperatorActor.onMessage(DataflowOperatorActor.java:108)
+	at groovyx.gpars.actor.impl.SDAClosure$1.call(SDAClosure.java:43)
+	at groovyx.gpars.actor.AbstractLoopingActor.runEnhancedWithoutRepliesOnMessages(AbstractLoopingActor.java:293)
+	at groovyx.gpars.actor.AbstractLoopingActor.access$400(AbstractLoopingActor.java:30)
+	at groovyx.gpars.actor.AbstractLoopingActor$1.handleMessage(AbstractLoopingActor.java:93)
+	at groovyx.gpars.util.AsyncMessagingCore.run(AsyncMessagingCore.java:132)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Sep-11 12:44:37.234 [Actor Thread 2] DEBUG nextflow.Session - Session aborted -- Cause: No signature of method: nextflow.Channel$_fromFilePairs0_closure6.call() is applicable for argument types: (sun.nio.fs.UnixPath) values: [/Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/DTRA_08_PM.R1.fastq.gz]
+Possible solutions: any(), any(), any(groovy.lang.Closure), tap(groovy.lang.Closure), each(groovy.lang.Closure), any(groovy.lang.Closure)
+Sep-11 12:44:37.254 [Actor Thread 3] ERROR nextflow.Nextflow - Cannot find any reads matching: data/*{R1,R2}*.fastq
+NB: Path needs to be enclosed in quotes!
+If this is single-end data, please specify --singleEnd on the command line.

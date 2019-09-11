@@ -60,9 +60,8 @@ The best way to run Nextflow is using an sbatch script using the same command sp
 | Arugment  | Usage                            | Description                                                          |
 |-----------|----------------------------------|----------------------------------------------------------------------|
 | -profile  | \<base,slurm\>                    | Configuration profile to use.                                       |
-| --fastqs  | \</project/\*\_{R1,R2}\*.fastq\> | Directory pattern for fastq files.                                   |
+| --fastqs  | \</project/\*\_{R1,R2}\*.fastq.gz\> | Directory pattern for fastq files (gzipped).                      |
 | --sras    | \</project/\*.sra\>              | Directory pattern for sra files.                                     |
-| --genome_id | \<'hg38'>                      | Genome ID to which the samples will be mapped (e.g. hg38, mm10, rn6).|
 | --workdir | \</project/tmp/\>                | Nextflow working directory where all intermediate files are saved.   |
 | --email   | \<EMAIL\>                        | Where to send workflow report email.                                 |
 
@@ -75,6 +74,8 @@ The best way to run Nextflow is using an sbatch script using the same command sp
 | --saveTrim |               | Compresses and saves trimmed fastq reads.                 |
 | --saveAll  |               | Compresses and saves all fastq reads.                     |
 | --skipBAM  |               | Skips saving BAM files (only save CRAM). Default=False    |
+| --savebw   |               | Save normalized BigWig files for UCSC genome broswer.     |
+| --savebg   |               | Saves concatenated pos/neg bedGraph file.                 |
 
 **Input File Options**
 
@@ -82,6 +83,7 @@ The best way to run Nextflow is using an sbatch script using the same command sp
 |--------------|-------------|------------------------------------------------------------------------------|
 | --singleEnd  |             | Specifies that the input files are not paired reads (default is paired-end). |
 | --flip       |             | Reverse complements each strand. Necessary for some library preps.           |
+| --flipR2     |             | Reverse complements R2 only (will not work in singleEnd mode).               |
 
 **Performance Options**
 

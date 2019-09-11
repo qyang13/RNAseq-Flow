@@ -1,0 +1,312 @@
+Sep-11 12:56:57.663 [main] DEBUG nextflow.cli.Launcher - $> nextflow run /Users/qiya9811/DTRA/RNAseq-Flow/main.nf -profile slurm_grch38 --workdir /scratch/Users/qiya9811/DTRA_8_15 --genome_id hg38 --outdir /scratch/Users/qiya9811/DTRA_8_15/nf_out --email qiya9811@colorado.edu --fastqs '/Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/*.{R1,R2}.fastq.gz' --flipR2
+Sep-11 12:56:57.930 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 19.01.0
+Sep-11 12:56:57.949 [main] INFO  nextflow.cli.CmdRun - Launching `/Users/qiya9811/DTRA/RNAseq-Flow/main.nf` [ridiculous_marconi] - revision: 75062231bb
+Sep-11 12:56:57.967 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /Users/qiya9811/DTRA/RNAseq-Flow/nextflow.config
+Sep-11 12:56:57.968 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/qiya9811/DTRA/RNAseq-Flow/nextflow.config
+Sep-11 12:56:57.998 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `slurm_grch38`
+Sep-11 12:56:58.756 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [standard, slurm, minimal, test, paper, slurm_grch38, conda, batch, singularity, none, aws, docker]
+Sep-11 12:56:58.789 [main] DEBUG nextflow.Session - Session uuid: 7c8b597d-ba51-4267-96a4-1b19b6f15215
+Sep-11 12:56:58.789 [main] DEBUG nextflow.Session - Run name: ridiculous_marconi
+Sep-11 12:56:58.790 [main] DEBUG nextflow.Session - Executor pool size: 32
+Sep-11 12:56:58.802 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 19.01.0 build 5050
+  Modified: 22-01-2019 11:19 UTC (04:19 MDT)
+  System: Linux 3.10.0-862.14.4.el7.x86_64
+  Runtime: Groovy 2.5.5 on OpenJDK 64-Bit Server VM 1.8.0_151-b12
+  Encoding: UTF-8 (UTF-8)
+  Process: 20222@fiji-2.colorado.edu [128.138.93.105]
+  CPUs: 32 - Mem: 125.7 GB (617.4 MB) - Swap: 32 GB (28.2 GB)
+Sep-11 12:56:58.857 [main] DEBUG nextflow.Session - Work-dir: /scratch/Users/qiya9811/DTRA_8_15 [fhgfs]
+Sep-11 12:56:59.118 [main] DEBUG nextflow.Session - Session start invoked
+Sep-11 12:56:59.122 [main] DEBUG nextflow.processor.TaskDispatcher - Dispatcher > start
+Sep-11 12:56:59.122 [main] DEBUG nextflow.trace.TraceFileObserver - Flow starting -- trace file: /scratch/Users/qiya9811/DTRA_8_15/nf_out/pipeline_info/steadystate_pipeline_trace.txt
+Sep-11 12:56:59.149 [main] DEBUG nextflow.script.ScriptRunner - > Script parsing
+Sep-11 12:56:59.731 [main] WARN  nextflow.Session - There's no process matching config selector: fastqc -- Did you mean: fastQC?
+Sep-11 12:56:59.731 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-11 12:56:59.780 [PathVisitor-1] DEBUG nextflow.file.PathVisitor - files for syntax: glob; folder: /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/; pattern: *.{R1,R2}.fastq.gz; options: [:]
+Sep-11 12:56:59.863 [main] INFO  nextflow.Nextflow - =======================================================
+NascentFlow v1.1"
+=======================================================
+Sep-11 12:56:59.867 [main] INFO  nextflow.Nextflow - Pipeline Name  : NascentFlow
+Help Message   : false
+Pipeline Version: 1.1
+Run Name       : ridiculous_marconi
+Reads          : data/*{R1,R2}*.fastq
+Fastqs         : /Users/dtra_collab/DTRA_clinical/raw_fastq/DTRA08_to_15/*.{R1,R2}.fastq.gz
+Genome Ref     : /Users/qiya9811/DTRA/ref/hg38_ercc.fa
+Thread fqdump  : NO
+Data Type      : Paired-End
+Save All fastq : NO
+Save BAM       : YES
+Save BigWig    : NO
+Save bedGraph  : NO
+Save fastq     : NO
+Save Trimmed   : NO
+Reverse Comp   : NO
+Reverse Comp R2: YES
+Run RSeQC      : YES
+Run Count      : YES
+Run MultiQC    : YES
+Max Memory     : 200 GB
+Max CPUs       : 32
+Max Time       : 2d
+Output dir     : /scratch/Users/qiya9811/DTRA_8_15/nf_out
+Working dir    : /scratch/Users/qiya9811/DTRA_8_15
+Container Engine: null
+Current home   : /Users/qiya9811
+Current user   : qiya9811
+Current path   : /Users/qiya9811/DTRA/RNAseq-Flow
+Script dir     : /Users/qiya9811/DTRA/RNAseq-Flow
+Config Profile : slurm_grch38
+E-mail Address : qiya9811@colorado.edu
+Sep-11 12:56:59.867 [main] INFO  nextflow.Nextflow - =======================================================
+Sep-11 12:56:59.919 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:56:59.919 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:56:59.929 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:56:59.932 [main] INFO  nextflow.executor.Executor - [warm up] executor > slurm
+Sep-11 12:56:59.937 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Sep-11 12:56:59.941 [main] DEBUG nextflow.processor.TaskDispatcher - Starting monitor: TaskPollingMonitor
+Sep-11 12:56:59.942 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Sep-11 12:56:59.944 [main] DEBUG nextflow.executor.Executor - Invoke register for executor: slurm
+Sep-11 12:56:59.944 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:56:59.976 [main] DEBUG nextflow.Session - >>> barrier register (process: get_software_versions)
+Sep-11 12:56:59.978 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > get_software_versions -- maxForks: 32
+Sep-11 12:57:00.018 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.019 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.019 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.019 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.020 [main] DEBUG nextflow.Session - >>> barrier register (process: sra_dump)
+Sep-11 12:57:00.021 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > sra_dump -- maxForks: 32
+Sep-11 12:57:00.027 [Actor Thread 1] DEBUG nextflow.Session - <<< barrier arrive (process: sra_dump)
+Sep-11 12:57:00.032 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.033 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.033 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.033 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.034 [main] DEBUG nextflow.Session - >>> barrier register (process: fastQC)
+Sep-11 12:57:00.034 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > fastQC -- maxForks: 32
+Sep-11 12:57:00.044 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.044 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.044 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.044 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.045 [main] DEBUG nextflow.Session - >>> barrier register (process: bbduk)
+Sep-11 12:57:00.045 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > bbduk -- maxForks: 32
+Sep-11 12:57:00.060 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.060 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.060 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.060 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.063 [main] DEBUG nextflow.Session - >>> barrier register (process: fastqc_trimmed)
+Sep-11 12:57:00.068 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > fastqc_trimmed -- maxForks: 32
+Sep-11 12:57:00.078 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.078 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.078 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.079 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.081 [main] DEBUG nextflow.Session - >>> barrier register (process: hisat2)
+Sep-11 12:57:00.081 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > hisat2 -- maxForks: 32
+Sep-11 12:57:00.099 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.099 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.099 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.100 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.100 [main] DEBUG nextflow.Session - >>> barrier register (process: samtools)
+Sep-11 12:57:00.101 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > samtools -- maxForks: 32
+Sep-11 12:57:00.112 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.112 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.112 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.113 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.114 [main] DEBUG nextflow.Session - >>> barrier register (process: preseq)
+Sep-11 12:57:00.115 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > preseq -- maxForks: 32
+Sep-11 12:57:00.123 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.124 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.124 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.124 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.125 [main] DEBUG nextflow.Session - >>> barrier register (process: rseqc_qc)
+Sep-11 12:57:00.125 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > rseqc_qc -- maxForks: 32
+Sep-11 12:57:00.129 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.129 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.129 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.130 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.130 [main] DEBUG nextflow.Session - >>> barrier register (process: rseqc_count)
+Sep-11 12:57:00.130 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > rseqc_count -- maxForks: 32
+Sep-11 12:57:00.134 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.134 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.134 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.135 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.135 [main] DEBUG nextflow.Session - >>> barrier register (process: pileup)
+Sep-11 12:57:00.136 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > pileup -- maxForks: 32
+Sep-11 12:57:00.143 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.143 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.143 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.143 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.144 [main] DEBUG nextflow.Session - >>> barrier register (process: bedgraphs)
+Sep-11 12:57:00.144 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > bedgraphs -- maxForks: 32
+Sep-11 12:57:00.151 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.151 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.151 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.151 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.152 [main] DEBUG nextflow.Session - >>> barrier register (process: normalized_bigwigs)
+Sep-11 12:57:00.152 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > normalized_bigwigs -- maxForks: 32
+Sep-11 12:57:00.158 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.158 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.158 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.158 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.159 [main] DEBUG nextflow.Session - >>> barrier register (process: igvtools)
+Sep-11 12:57:00.159 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > igvtools -- maxForks: 32
+Sep-11 12:57:00.176 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: slurm
+Sep-11 12:57:00.176 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'slurm'
+Sep-11 12:57:00.176 [main] DEBUG nextflow.executor.Executor - Initializing executor: slurm
+Sep-11 12:57:00.176 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+Sep-11 12:57:00.177 [main] DEBUG nextflow.Session - >>> barrier register (process: multiQC)
+Sep-11 12:57:00.177 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > multiQC -- maxForks: 32
+Sep-11 12:57:00.182 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Sep-11 12:57:00.182 [main] DEBUG nextflow.Session - Session await
+Sep-11 12:57:00.383 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_15_WS) > jobId: 3542846; workDir: /scratch/Users/qiya9811/DTRA_8_15/72/0ae5f59a34b192318e6db48cce4dbc
+Sep-11 12:57:00.391 [Task submitter] INFO  nextflow.Session - [72/0ae5f5] Submitted process > fastQC (DTRA_15_WS)
+Sep-11 12:57:00.536 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_11_PM) > jobId: 3542847; workDir: /scratch/Users/qiya9811/DTRA_8_15/46/dbd167d60af3058cae7cccb50b4819
+Sep-11 12:57:00.536 [Task submitter] INFO  nextflow.Session - [46/dbd167] Submitted process > fastQC (DTRA_11_PM)
+Sep-11 12:57:00.599 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_10_PM) > jobId: 3542848; workDir: /scratch/Users/qiya9811/DTRA_8_15/d5/4523dc2ba8b4ff6c98d2a5fa846e64
+Sep-11 12:57:00.599 [Task submitter] INFO  nextflow.Session - [d5/4523dc] Submitted process > bbduk (DTRA_10_PM)
+Sep-11 12:57:00.641 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_10_WS) > jobId: 3542849; workDir: /scratch/Users/qiya9811/DTRA_8_15/c5/043163e677e77cf9dac575681a02e0
+Sep-11 12:57:00.641 [Task submitter] INFO  nextflow.Session - [c5/043163] Submitted process > bbduk (DTRA_10_WS)
+Sep-11 12:57:00.663 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_14_WS) > jobId: 3542850; workDir: /scratch/Users/qiya9811/DTRA_8_15/1e/8424ebba41674d19b1af54e6c5bef0
+Sep-11 12:57:00.663 [Task submitter] INFO  nextflow.Session - [1e/8424eb] Submitted process > bbduk (DTRA_14_WS)
+Sep-11 12:57:00.816 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_15_PM) > jobId: 3542851; workDir: /scratch/Users/qiya9811/DTRA_8_15/8e/b1c270bde18c9f5cb58500f94c48e8
+Sep-11 12:57:00.816 [Task submitter] INFO  nextflow.Session - [8e/b1c270] Submitted process > fastQC (DTRA_15_PM)
+Sep-11 12:57:00.858 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process get_software_versions > jobId: 3542852; workDir: /scratch/Users/qiya9811/DTRA_8_15/f2/21d5593fd1edfde12ee1843ed59ea6
+Sep-11 12:57:00.858 [Task submitter] INFO  nextflow.Session - [f2/21d559] Submitted process > get_software_versions
+Sep-11 12:57:00.882 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_14_PM) > jobId: 3542853; workDir: /scratch/Users/qiya9811/DTRA_8_15/dc/4f888bde9fb496e783297f863d434b
+Sep-11 12:57:00.882 [Task submitter] INFO  nextflow.Session - [dc/4f888b] Submitted process > fastQC (DTRA_14_PM)
+Sep-11 12:57:00.905 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_15_WS) > jobId: 3542854; workDir: /scratch/Users/qiya9811/DTRA_8_15/31/df4d29b3f4eb2771e60e4f961e9d56
+Sep-11 12:57:00.905 [Task submitter] INFO  nextflow.Session - [31/df4d29] Submitted process > bbduk (DTRA_15_WS)
+Sep-11 12:57:00.927 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_13_PM) > jobId: 3542855; workDir: /scratch/Users/qiya9811/DTRA_8_15/d6/f3c4209e9a065649bb6219a3c1ba4c
+Sep-11 12:57:00.927 [Task submitter] INFO  nextflow.Session - [d6/f3c420] Submitted process > bbduk (DTRA_13_PM)
+Sep-11 12:57:00.951 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_08_PM) > jobId: 3542856; workDir: /scratch/Users/qiya9811/DTRA_8_15/ea/9c30f69cdcebb04ff91d5ce3338d07
+Sep-11 12:57:00.951 [Task submitter] INFO  nextflow.Session - [ea/9c30f6] Submitted process > fastQC (DTRA_08_PM)
+Sep-11 12:57:00.974 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_14_PM) > jobId: 3542857; workDir: /scratch/Users/qiya9811/DTRA_8_15/0a/6880ab5b4553a67e183250874f491d
+Sep-11 12:57:00.974 [Task submitter] INFO  nextflow.Session - [0a/6880ab] Submitted process > bbduk (DTRA_14_PM)
+Sep-11 12:57:00.996 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_08_PM) > jobId: 3542858; workDir: /scratch/Users/qiya9811/DTRA_8_15/25/d3810fb6d94faf6336e1c1fab3405e
+Sep-11 12:57:00.996 [Task submitter] INFO  nextflow.Session - [25/d3810f] Submitted process > bbduk (DTRA_08_PM)
+Sep-11 12:57:01.036 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_09_WS) > jobId: 3542859; workDir: /scratch/Users/qiya9811/DTRA_8_15/3b/ccfeb02b90f7fd6840d801c68a7019
+Sep-11 12:57:01.036 [Task submitter] INFO  nextflow.Session - [3b/ccfeb0] Submitted process > bbduk (DTRA_09_WS)
+Sep-11 12:57:01.058 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_11_WS) > jobId: 3542860; workDir: /scratch/Users/qiya9811/DTRA_8_15/66/def885cc7aa4e41a203a3903f6f3f4
+Sep-11 12:57:01.058 [Task submitter] INFO  nextflow.Session - [66/def885] Submitted process > bbduk (DTRA_11_WS)
+Sep-11 12:57:01.087 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_14_WS) > jobId: 3542861; workDir: /scratch/Users/qiya9811/DTRA_8_15/38/08e4473375a4856d32664753d8c88a
+Sep-11 12:57:01.088 [Task submitter] INFO  nextflow.Session - [38/08e447] Submitted process > fastQC (DTRA_14_WS)
+Sep-11 12:57:01.110 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_13_PM) > jobId: 3542862; workDir: /scratch/Users/qiya9811/DTRA_8_15/18/9ae2d830f8225f25d1744c510f3aee
+Sep-11 12:57:01.110 [Task submitter] INFO  nextflow.Session - [18/9ae2d8] Submitted process > fastQC (DTRA_13_PM)
+Sep-11 12:57:01.132 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_09_WS) > jobId: 3542863; workDir: /scratch/Users/qiya9811/DTRA_8_15/7c/2e8a608f5630931c7b207cb26d6503
+Sep-11 12:57:01.132 [Task submitter] INFO  nextflow.Session - [7c/2e8a60] Submitted process > fastQC (DTRA_09_WS)
+Sep-11 12:57:01.182 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_12_PM) > jobId: 3542864; workDir: /scratch/Users/qiya9811/DTRA_8_15/a9/7c02ac2a8cb140a5491631ea9d5458
+Sep-11 12:57:01.182 [Task submitter] INFO  nextflow.Session - [a9/7c02ac] Submitted process > bbduk (DTRA_12_PM)
+Sep-11 12:57:01.202 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_11_WS) > jobId: 3542865; workDir: /scratch/Users/qiya9811/DTRA_8_15/cd/040462b01dd215e80d18db5eef1e64
+Sep-11 12:57:01.202 [Task submitter] INFO  nextflow.Session - [cd/040462] Submitted process > fastQC (DTRA_11_WS)
+Sep-11 12:57:01.238 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_11_PM) > jobId: 3542866; workDir: /scratch/Users/qiya9811/DTRA_8_15/98/bb65790933b8c88e074701a302ad79
+Sep-11 12:57:01.238 [Task submitter] INFO  nextflow.Session - [98/bb6579] Submitted process > bbduk (DTRA_11_PM)
+Sep-11 12:57:02.009 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_10_WS) > jobId: 3542867; workDir: /scratch/Users/qiya9811/DTRA_8_15/6f/601dce14fdfe8afe9e5aa397a315ce
+Sep-11 12:57:02.009 [Task submitter] INFO  nextflow.Session - [6f/601dce] Submitted process > fastQC (DTRA_10_WS)
+Sep-11 12:57:02.040 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_13_WS) > jobId: 3542868; workDir: /scratch/Users/qiya9811/DTRA_8_15/19/a8256c5d28e9fd2b6b2108c0907fbd
+Sep-11 12:57:02.040 [Task submitter] INFO  nextflow.Session - [19/a8256c] Submitted process > fastQC (DTRA_13_WS)
+Sep-11 12:57:02.066 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_09_PM) > jobId: 3542869; workDir: /scratch/Users/qiya9811/DTRA_8_15/6f/c1b919e410eb8d579fc68e320eea9b
+Sep-11 12:57:02.067 [Task submitter] INFO  nextflow.Session - [6f/c1b919] Submitted process > bbduk (DTRA_09_PM)
+Sep-11 12:57:02.090 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_12_WS) > jobId: 3542870; workDir: /scratch/Users/qiya9811/DTRA_8_15/6b/a5a02961612f782faec5ec84ab4747
+Sep-11 12:57:02.090 [Task submitter] INFO  nextflow.Session - [6b/a5a029] Submitted process > fastQC (DTRA_12_WS)
+Sep-11 12:57:02.111 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_10_PM) > jobId: 3542871; workDir: /scratch/Users/qiya9811/DTRA_8_15/8d/048dfe1803fb65de375a53d11ae5d3
+Sep-11 12:57:02.111 [Task submitter] INFO  nextflow.Session - [8d/048dfe] Submitted process > fastQC (DTRA_10_PM)
+Sep-11 12:57:02.150 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_15_PM) > jobId: 3542872; workDir: /scratch/Users/qiya9811/DTRA_8_15/48/77570d1226f90bf24146f6b2a82f57
+Sep-11 12:57:02.150 [Task submitter] INFO  nextflow.Session - [48/77570d] Submitted process > bbduk (DTRA_15_PM)
+Sep-11 12:57:02.216 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_12_WS) > jobId: 3542873; workDir: /scratch/Users/qiya9811/DTRA_8_15/2d/5afa8f00860681564ee482f64dbe7c
+Sep-11 12:57:02.217 [Task submitter] INFO  nextflow.Session - [2d/5afa8f] Submitted process > bbduk (DTRA_12_WS)
+Sep-11 12:57:02.586 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_09_PM) > jobId: 3542874; workDir: /scratch/Users/qiya9811/DTRA_8_15/01/a700be828c24ee45fb03972c6e4160
+Sep-11 12:57:02.586 [Task submitter] INFO  nextflow.Session - [01/a700be] Submitted process > fastQC (DTRA_09_PM)
+Sep-11 12:57:02.625 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastQC (DTRA_12_PM) > jobId: 3542875; workDir: /scratch/Users/qiya9811/DTRA_8_15/54/1fd936663bc2016883052bb7ae2a1b
+Sep-11 12:57:02.625 [Task submitter] INFO  nextflow.Session - [54/1fd936] Submitted process > fastQC (DTRA_12_PM)
+Sep-11 12:57:02.700 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process bbduk (DTRA_13_WS) > jobId: 3542876; workDir: /scratch/Users/qiya9811/DTRA_8_15/0a/c9de1f0cb5da8bbd44a8d7884edd2c
+Sep-11 12:57:02.700 [Task submitter] INFO  nextflow.Session - [0a/c9de1f] Submitted process > bbduk (DTRA_13_WS)
+Sep-11 12:57:03.416 [SIGINT handler] DEBUG nextflow.Session - Session aborted -- Cause: SIGINT
+Sep-11 12:57:03.466 [SIGINT handler] DEBUG nextflow.Session - The following nodes are still active:
+[process] fastqc_trimmed
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] hisat2
+  status=ACTIVE
+  port 0: (value) bound ; channel: indices
+  port 1: (value) bound ; channel: indices_path
+  port 2: (queue) OPEN  ; channel: -
+  port 3: (cntrl) -     ; channel: $
+
+[process] samtools
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] preseq
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (queue) OPEN  ; channel: bam_indices
+  port 2: (cntrl) -     ; channel: $
+
+[process] rseqc_qc
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (queue) OPEN  ; channel: bam_indices
+  port 2: (cntrl) -     ; channel: $
+
+[process] rseqc_count
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (queue) OPEN  ; channel: bam_indices
+  port 2: (cntrl) -     ; channel: $
+
+[process] pileup
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (queue) OPEN  ; channel: bam_indices
+  port 2: (cntrl) -     ; channel: $
+
+[process] bedgraphs
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (queue) OPEN  ; channel: -
+  port 3: (cntrl) -     ; channel: $
+
+[process] normalized_bigwigs
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (queue) OPEN  ; channel: -
+  port 2: (value) bound ; channel: chrom_sizes
+  port 3: (cntrl) -     ; channel: $
+
+[process] igvtools
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: chrom_sizes
+  port 2: (cntrl) -     ; channel: $
+
+[process] multiQC
+  status=ACTIVE
+  port 0: (value) bound ; channel: multiqc_config
+  port 1: (value) OPEN  ; channel: fastqc
+  port 2: (value) OPEN  ; channel: qc/fastqc/*
+  port 3: (value) OPEN  ; channel: qc/trimstats/*
+  port 4: (value) OPEN  ; channel: qc/mapstats/*
+  port 5: (value) OPEN  ; channel: qc/rseqc/*
+  port 6: (value) OPEN  ; channel: qc/preseq/*
+  port 7: (value) OPEN  ; channel: software_versions/*
+  port 8: (value) OPEN  ; channel: qc/hisat2_mapstats/*
+  port 9: (cntrl) -     ; channel: $
+
+Sep-11 12:57:03.470 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm)
+Sep-11 12:57:03.471 [main] DEBUG nextflow.Session - Session await > all process finished
+Sep-11 12:57:03.471 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Sep-11 12:57:03.570 [main] INFO  nextflow.Nextflow - [SteadyFlow] Sent summary e-mail to qiya9811@colorado.edu (sendmail)
+Sep-11 12:57:03.579 [main] INFO  nextflow.Nextflow - [SteadyFlow] Pipeline Complete
+Sep-11 12:57:03.585 [main] WARN  n.processor.TaskPollingMonitor - Killing pending tasks (31)
+Sep-11 12:57:03.641 [main] DEBUG nextflow.trace.StatsObserver - Workflow completed > WorkflowStats[succeedCount=0; failedCount=31; ignoredCount=0; cachedCount=0; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms]
+Sep-11 12:57:03.641 [main] DEBUG nextflow.trace.TraceFileObserver - Flow completing -- flushing trace file
+Sep-11 12:57:03.645 [main] DEBUG nextflow.trace.ReportObserver - Flow completing -- rendering html report
+Sep-11 12:57:03.723 [main] DEBUG nextflow.trace.ReportObserver - Execution report summary data:
+  {"fastQC":{"cpu":null,"mem":null,"time":null,"reads":null,"writes":null,"cpuUsage":null,"memUsage":null,"timeUsage":null},"bbduk":{"cpu":null,"mem":null,"time":null,"reads":null,"writes":null,"cpuUsage":null,"memUsage":null,"timeUsage":null},"get_software_versions":{"cpu":null,"mem":null,"time":null,"reads":null,"writes":null,"cpuUsage":null,"memUsage":null,"timeUsage":null}}
+Sep-11 12:57:04.862 [main] DEBUG nextflow.trace.TimelineObserver - Flow completing -- rendering html timeline
+Sep-11 12:57:05.457 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Sep-11 12:57:05.507 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
